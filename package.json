@@ -5,7 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "test": "jest --runInBand --passWithNoTests --silent",
+    "test:unit": "npm test -- --watch --noStackTrace -c jest-unit-config.js",
+    "test:integration": "npm test -- --watch --noStackTrace -c jest-integration-config.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +19,8 @@
     "mongoose": "^6.3.1"
   },
   "devDependencies": {
+    "@shelf/jest-mongodb": "^2.2.2",
+    "jest": "^28.0.2",
     "nodemon": "^2.0.15"
   }
 }
