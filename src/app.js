@@ -1,6 +1,7 @@
 import express from "express";
 import "dotenv/config.js";
 import "./database/index.js";
+import { routes } from "./routes/index.js";
 
 const app = express();
 
@@ -8,8 +9,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.json());
 
-app.get("/", (request, response) => {
-  return response.json({ message: "Hello World!" });
-});
+app.use(routes);
 
 export { app };
