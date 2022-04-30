@@ -5,5 +5,8 @@ export default {
   // coverageProvider: "babel",
   preset: '@shelf/jest-mongodb',
   testEnvironment: "node",
+  transform: {
+    "^.+\\.js$": "babel-jest",
+  }
 };
 
