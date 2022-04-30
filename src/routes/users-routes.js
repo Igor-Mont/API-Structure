@@ -1,8 +1,9 @@
 import { Router } from "express";
+import { userValidation } from "../middlewares/userValidation.js";
 
 const usersRoutes = Router();
 
-usersRoutes.get("/", (request, response) => {
+usersRoutes.post("/", userValidation, (request, response) => {
   return response.json({ message: "Users routes" });
 });
 
