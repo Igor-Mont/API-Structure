@@ -7,6 +7,7 @@ describe('User Validation Middleware', () => {
       .post('/users')
     
     expect(response.statusCode).toEqual(400) 
+    expect(response.body).toHaveProperty('message')
   });
 
   test('should return a bad request if first_name no is provided or invalid', async () => {
@@ -20,7 +21,8 @@ describe('User Validation Middleware', () => {
         cpf: 11111111111
       })
     
-    expect(response.statusCode).toEqual(400) 
+    expect(response.statusCode).toEqual(400)
+    expect(response.body).toHaveProperty('message')
   });
 
   test('should return a bad request if last_name no is provided or invalid', async () => {
@@ -35,6 +37,7 @@ describe('User Validation Middleware', () => {
       })
     
     expect(response.statusCode).toEqual(400) 
+    expect(response.body).toHaveProperty('message')
   });
 
   test('should return a bad request if password no is provided or invalid', async () => {
@@ -49,6 +52,7 @@ describe('User Validation Middleware', () => {
       })
     
     expect(response.statusCode).toEqual(400) 
+    expect(response.body).toHaveProperty('message')
   });
 
   test('should return a bad request if email no is provided or invalid', async () => {
@@ -62,7 +66,8 @@ describe('User Validation Middleware', () => {
         cpf: 11111111111
       })
     
-    expect(response.statusCode).toEqual(400) 
+    expect(response.statusCode).toEqual(400)
+    expect(response.body).toHaveProperty('message')
   });
 
   test('should return a bad request if age no is provided or invalid', async () => {
@@ -76,7 +81,8 @@ describe('User Validation Middleware', () => {
         cpf: 11111111111
       })
     
-    expect(response.statusCode).toEqual(400) 
+    expect(response.statusCode).toEqual(400)
+    expect(response.body).toHaveProperty('message')
   });
 
   test('should return a bad request if age no is provided or invalid', async () => {
@@ -91,5 +97,6 @@ describe('User Validation Middleware', () => {
       })
     
     expect(response.statusCode).toEqual(400) 
+    expect(response.body).toHaveProperty('message')
   });
 });
