@@ -11,15 +11,15 @@ async function userValidation(req, res, next) {
   })
 
   if (Object.keys(req.body).length === 0) {
-    return res.status(400).send();
+    return res.status(400).json({
+      message: "Request request cannot be empty"
+    });
   }
 
   const schemaValid =  await schema.isValid(req.body);
 
-  console.log('ERROR SCHEMA', schemaValid)
-
   if (!schemaValid) {
-    return res.status(400).send({ error: schemaValid.err });
+    return res.status(400).json({ message: "Some field missing or invalid" });
   }
   
   
