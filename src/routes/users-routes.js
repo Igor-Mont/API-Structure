@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { createUser } from "../controllers/create-user.js";
 import { deleteUser } from "../controllers/delete-user.js";
-import { showUsers } from "../controllers/show-uers.js";
+import { showUsers } from "../controllers/show-users.js";
 import { showUser } from "../controllers/show-user.js";
 import { updateUser } from "../controllers/update-user.js";
 import { userValidation } from "../middlewares/userValidation.js";
