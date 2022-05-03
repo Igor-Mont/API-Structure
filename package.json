@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "test": "jest --runInBand --passWithNoTests --silent",
+    "test": "jest --runInBand --passWithNoTests",
     "test:unit": "npm test -- --watch --noStackTrace -c jest-unit-config.js",
     "test:integration": "npm test -- --watch --noStackTrace -c jest-integration-config.js"
   },

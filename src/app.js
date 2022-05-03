@@ -1,6 +1,5 @@
 import express from "express";
 import "dotenv/config.js";
-import "./database/index.js";
 import { routes } from "./routes/index.js";
 import { AppError } from "./errors/appError.js";
 
