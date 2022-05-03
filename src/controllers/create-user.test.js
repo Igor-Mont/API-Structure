@@ -31,7 +31,7 @@ describe('Create User Controller', () => {
     expect(response.body).toHaveProperty('_id')
   });
 
-  test('should be able show the user without password', async () => {
+  test('should be able return the user without password', async () => {
     const response = await request(app).post('/users').send({
       first_name: "any_first_name",
       last_name: "any_last_name",
