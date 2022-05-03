@@ -2,7 +2,7 @@ import request from 'supertest';
 import { app } from '../app.js';
 import { MongoHelper } from "../database/mongo-helper.js";
 
-describe('Create User Controller', () => {
+describe('Update User Controller', () => {
   beforeAll(async () => {
     await MongoHelper.connect(process.env.MONGO_URL)
   })

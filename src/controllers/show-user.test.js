@@ -2,7 +2,7 @@ import request from 'supertest';
 import { app } from '../app.js';
 import { MongoHelper } from "../database/mongo-helper.js";
 
-describe('Delete User Controller', () => {
+describe('Show User Controller', () => {
   beforeAll(async () => {
     await MongoHelper.connect(process.env.MONGO_URL)
   })
@@ -17,7 +17,15 @@ describe('Delete User Controller', () => {
     await MongoHelper.disconnect()
   })
 
-  test('should be able create a new user', async () => {
+  test('should not be able update an user if user is non-existent', async () => {
+    const fakeObjectId = "627173a7fd28624b412e07b5"
+    const response = await request(app).get(`/users/${fakeObjectId}`)
+
+    expect(response.statusCode).toBe(400)
+    expect(response.body).toHaveProperty('message')
+  });
+
+  test('should not be able update an user if user is non-existent', async () => {
     const { body: user } = await request(app).post('/users').send({
       first_name: "any_first_name",
       last_name: "any_last_name",
@@ -27,16 +35,10 @@ describe('Delete User Controller', () => {
       cpf: 11111111111
     })
 
-    const response = await request(app).delete(`/users/${user._id}`)
+    const response = await request(app).get(`/users/${user._id}`)
 
     expect(response.statusCode).toBe(200)
-  });
-
-  test('should not be able delete an user if user is non-existent', async () => {
-    const nonExistentId = "627173a7fd28624b412e07b5"
-    const response = await request(app).delete(`/users/${nonExistentId}`)
-
-    expect(response.statusCode).toBe(400)
-    expect(response.body).toHaveProperty('message')
+    expect(response.body).toHaveProperty('_id')
+    expect(response.body).not.toHaveProperty('password')
   });
 });
